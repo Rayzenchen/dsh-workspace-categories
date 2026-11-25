@@ -1,0 +1,27 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dev dependencies
+        run: npm ci
+      - name: Syntax check
+        run: |
+          node --check index.js
+          node --check client.js
+      - name: Run the assertion suite
+        run: node tools/verify-core.mjs

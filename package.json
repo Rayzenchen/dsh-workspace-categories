@@ -1,0 +1,81 @@
+{
+  "name": "@local/dsh-workspace-categories",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Group sidebar Workspaces into themed, collapsible category blocks that always stay on top, and give every Workspace its own highlight block so an expanded Session list never blurs into the next Workspace.",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "dsh",
+    "cordis",
+    "sidebar",
+    "workspace",
+    "workspaces",
+    "categories",
+    "groups",
+    "drag-and-drop",
+    "theme-color",
+    "chat-ui",
+    "web-ui",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rayzenchen/dsh-workspace-categories.git"
+  },
+  "homepage": "https://github.com/Rayzenchen/dsh-workspace-categories#readme",
+  "bugs": {
+    "url": "https://github.com/Rayzenchen/dsh-workspace-categories/issues"
+  },
+  "engines": {
+    "dsh": "^0.2.3-alpha.2",
+    "node": ">=20"
+  },
+  "meta": {
+    "title": "工作区类别与分块高亮",
+    "description": "把侧边栏的工作区归入带主题色的可收起类别块，并给每个工作区加上独立分块。"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "tools/*.mjs",
+    "docs",
+    "icon.svg",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "node --check index.js && node --check client.js",
+    "verify": "node tools/verify-core.mjs",
+    "test": "npm run check && npm run verify"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-api-workspace-controller"
+      ]
+    }
+  }
+}

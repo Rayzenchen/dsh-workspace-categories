@@ -1,0 +1,1 @@
+![A sidebar with one expanded and one collapsed themed category block of nested Workspace cards above the Uncategorized row, beside a close-up of the category actions menu and the seven Finder tag colors](preview.svg)
